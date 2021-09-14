@@ -1,4 +1,4 @@
-@extends('Layouts/app') 
+@extends('inner-layout/app') 
 @section('breadcrumbs')
 <ol class="breadcrumb">
   <li class="breadcrumb-item">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
   <meta charset="utf-8">
@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SB Admin - Start Bootstrap Template</title>
+  <title>{{ config('app.name', 'Laravel') }}</title>
   <!-- Bootstrap core CSS-->
   <link href="{{ URL('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -19,7 +19,7 @@
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-  @include('Layouts/navigation')
+  @include('inner-layout/navigation')
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -29,7 +29,7 @@
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
-    @include('Layouts/footer')
+    @include('inner-layout/footer')
   </div>
 </body>
 
