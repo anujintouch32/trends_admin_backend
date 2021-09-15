@@ -14,9 +14,6 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
 Route::prefix('admin')->group(function () {
     
     Route::get('/', [HomeController::class, 'index'])->middleware('auth');
