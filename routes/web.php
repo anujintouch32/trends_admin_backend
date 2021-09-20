@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,11 @@ Route::prefix('admin')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 
     Auth::routes();
+    // User listing and add edit interface
+    Route::resource('/user', UserController::class);
+
+     // Category listing and add edit interface
+    Route::resource('/category', CategoryController::class);
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 });
