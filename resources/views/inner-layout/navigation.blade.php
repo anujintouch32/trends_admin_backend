@@ -23,13 +23,13 @@
             <span class="nav-link-text">Category</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="F-Tables">
-          <a class="nav-link" href="filter-tables.html">
+        <li class="nav-item {{request()->is('admin/product*') ? 'active' : ''}}" data-toggle="tooltip" data-placement="right" title="F-Tables">
+          <a class="nav-link" href="{{ url('/admin/product') }}">
             <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">F-Tables</span>
+            <span class="nav-link-text">Product</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="F-Tables1">
+        <!--li class="nav-item" data-toggle="tooltip" data-placement="right" title="F-Tables1">
           <a class="nav-link" href="filter-tables1.html">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">F-Tables1</span>
@@ -48,7 +48,7 @@
               <a href="register.html">Registration Page</a>
             </li>
           </ul>
-        </li>
+        </li-->
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
