@@ -57,7 +57,7 @@
                     No Parent 
                     @endif
                     </td>
-                    <td></td>
+                    <td>{{$category->category_product->count()}}</td>
                     <td>{{$category->status}}</td>
                     <td class="text-center"><div class="btn-group"><a href="{{route('category.edit', ['category' => $category->id])}}"><button type="button" class="btn btn-info mr-2">Edit</button></a><form action="{{route('category.destroy', ['category' => $category->id])}}" method="POST"> @csrf
                      @method('delete')

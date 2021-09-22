@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
           <label for="fName">Name</label>
-          <input type="text" class="form-control" id="fName" name="name" placeholder="John" value="{{old('name')}}">
+          <input type="text" class="form-control" id="fName" name="name" value="{{old('name')}}">
         </div>
         <div class="form-group">
           <label for="Select">Parent Category</label>

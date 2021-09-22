@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
           <label for="fName">Name</label>
-          <input type="text" class="form-control"  name="title" placeholder="John" value="{{old('title')}}">
+          <input type="text" class="form-control"  name="title" value="{{old('title')}}">
         </div>
          <div class="form-group">
           <label for="fName">Price</label>
@@ -35,7 +35,7 @@
         </div>
         <div class="form-group">
           <label for="fName">Quantity</label>
-          <input type="number" id="quantity" name="quantity" min="1" max="100" value="{{old('name')}}">
+          <input type="number" id="quantity" name="quantity" min="1" max="100" value="{{old('quantity')}}">
         </div>
         <div class="form-group">
           <label for="Select">Category</label>

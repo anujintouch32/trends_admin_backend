@@ -101,9 +101,14 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        // get edit product data  
+        $UpdatedProduct = product::where('id', $id)->get();
+        // getting all categories data 
+        $CategoryData=Category::all();
+    
+        return view('Product/product-edit',['category_data'=>$CategoryData,'updated_product'=>$UpdatedProduct]);
     }
 
     /**
@@ -113,9 +118,47 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        $user = auth()->user();
+        $user_id = $user->id;
+         // Validation logic start from here 
+        $attributeNames = array(
+           'category_id' => 'Category',
+           'title' => 'Title'     
+        );
+        Validator::make($request->all(), [
+            'title' => ['required','max:255',Rule::unique('products')->ignore($id)],
+            'price' => 'required',
+            'quantity' => 'required',
+            'category_id' => 'required',
+            'status' => 'required' 
+        ])->setAttributeNames($attributeNames)->validate();
+
+        try {
+            // Finding User from table to update user data 
+            $product = Product::find($id);
+            if($product){
+                //Preparing parameters going to update 
+                $product->title = $request->title;
+                $product->price = $request->price;
+                $product->user_id =$user_id;
+                $product->quantity = $request->quantity;
+                $product->category_id = $request->category_id;
+                $product->status = $request->status;
+                // updating data 
+                
+                $product->save();
+                $request->session()->flash('success', 'Project updated successfully!');
+
+            }else{
+                $request->session()->flash('error', 'Opps! Something went wrong');      
+            }
+        }catch(\Illuminate\Database\QueryException $e){
+            $request->session()->flash('error', 'Opps! Something went wrong');  
+        }
+    
+        return redirect()->route('product.index');
     }
 
     /**
