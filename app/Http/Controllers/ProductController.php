@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -103,6 +104,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        if (! Gate::allows('role-admin', auth()->user())) {
+            abort(403);
+        }
         // get edit product data  
         $UpdatedProduct = product::where('id', $id)->get();
         // getting all categories data 
