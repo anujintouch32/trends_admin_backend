@@ -16,6 +16,10 @@ use App\Http\Controllers\UserController;
 */
 
 Route::post('/login', [UserController::class, 'login']);
+Route::get('/user', [UserController::class, 'getUsers'])->middleware('auth:sanctum');
+Route::get('/user/{id}', [UserController::class, 'getUserByID'])->middleware('auth:sanctum')->where(['id' => '[0-9]+']);
+Route::put('/user/{id}', [UserController::class, 'editUser'])->middleware('auth:sanctum')->where(['id' => '[0-9]+']);
+Route::delete('/user/{id}', [UserController::class, 'deleteUser'])->middleware('auth:sanctum')->where(['id' => '[0-9]+']);
 
 Route::get('/product',function (){
     return 'products';
